@@ -1,9 +1,25 @@
-import Builder from "../components/Builder";
-import ReviewPanel from "../components/ReviewPanel";
+import Builder from "../components/bundle/Builder";
+import ReviewPanel from "../components/bundle/ReviewPanel";
 
 export default function Layout() {
   return (
-    <main className="mx-auto grid min-h-screen grid-cols-[1fr_420px] gap-8 px-12 py-10">
+    <main
+      className="
+      mx-auto
+      grid
+      min-h-screen
+      max-w-[1440px]
+      grid-cols-1
+      gap-10
+      px-4
+      py-8
+
+      lg:grid-cols-[1fr_420px]
+      lg:px-8
+
+      xl:px-12
+    "
+    >
       <Builder />
 
       <ReviewPanel />
