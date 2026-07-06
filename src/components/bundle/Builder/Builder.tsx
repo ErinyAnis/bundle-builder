@@ -1,8 +1,13 @@
+import Accordion from "../../ui/Accordion";
+import { useBundleData } from "../../../hooks/useBundleData";
+
 export default function Builder() {
+  const { steps } = useBundleData();
+
   return (
-    <section className="flex flex-col">
-      <header className="mb-8">
-        <h1 className="text-[40px] leading-tight font-semibold text-slate-900">
+    <section className="flex flex-col gap-8">
+      <header>
+        <h1 className="text-[40px] font-semibold leading-tight">
           Let's get started!
         </h1>
 
@@ -11,9 +16,13 @@ export default function Builder() {
         </p>
       </header>
 
-      <div className="rounded-3xl border border-slate-200 p-6">
-        Accordion will be here
-      </div>
+      <Accordion
+        items={steps.map((step) => ({
+          id: step.id,
+          title: step.title,
+          content: <div className="p-6">{step.title}</div>,
+        }))}
+      />
     </section>
   );
 }
