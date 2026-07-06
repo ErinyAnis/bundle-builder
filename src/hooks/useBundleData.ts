@@ -1,6 +1,13 @@
-import data from "../data/products.json";
-import type { BundleData } from "../types";
+import {
+  products,
+  review,
+  steps,
+} from "../data";
 
-export function useBundleData(): BundleData {
-  return data as BundleData;
+export function useBundleData() {
+  return {
+    steps,
+    products,
+    review,
+  };
 }
