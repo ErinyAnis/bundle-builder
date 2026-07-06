@@ -1,0 +1,53 @@
+{
+  "steps": [
+    {
+      "id": "cameras",
+      "title": "Choose your cameras",
+      "icon": "camera",
+      "stepNumber": 1
+    },
+    {
+      "id": "plan",
+      "title": "Choose your plan",
+      "icon": "shield",
+      "stepNumber": 2
+    },
+    {
+      "id": "sensors",
+      "title": "Choose your sensors",
+      "icon": "sensor",
+      "stepNumber": 3
+    },
+    {
+      "id": "protection",
+      "title": "Add extra protection",
+      "icon": "home",
+      "stepNumber": 4
+    }
+  ],
+  "products": [
+    {
+      "id": "wyze-cam-v4",
+      "stepId": "cameras",
+      "category": "Cameras",
+      "title": "Wyze Cam v4",
+      "description": "The clearest Wyze Cam ever made.",
+      "learnMoreUrl": "#",
+      "image": "/images/wyze-cam-v4.png",
+      "badge": "Save 22%",
+      "compareAtPrice": 35.98,
+      "price": 27.98,
+      "hasVariants": true,
+      "variants": [
+        { "id": "white", "label": "White", "swatch": "#fff" },
+        { "id": "grey", "label": "Grey", "swatch": "#888" },
+        { "id": "black", "label": "Black", "swatch": "#000" }
+      ],
+      "defaultVariant": "black"
+    }
+  ],
+  "initialSelections": {
+    "wyze-cam-v4": { "variantId": "black", "quantity": 1 },
+    "wyze-cam-pan-v3": { "variantId": "white", "quantity": 2 }
+  }
+}
