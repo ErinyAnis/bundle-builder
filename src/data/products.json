@@ -25,29 +25,170 @@
       "stepNumber": 4
     }
   ],
+
   "products": [
     {
       "id": "wyze-cam-v4",
       "stepId": "cameras",
-      "category": "Cameras",
+      "type": "camera",
+
       "title": "Wyze Cam v4",
       "description": "The clearest Wyze Cam ever made.",
       "learnMoreUrl": "#",
-      "image": "/images/wyze-cam-v4.png",
+
+      "image": "wyze-cam-v4.png",
+
       "badge": "Save 22%",
-      "compareAtPrice": 35.98,
+
       "price": 27.98,
-      "hasVariants": true,
+      "compareAtPrice": 35.98,
+
       "variants": [
-        { "id": "white", "label": "White", "swatch": "#fff" },
-        { "id": "grey", "label": "Grey", "swatch": "#888" },
-        { "id": "black", "label": "Black", "swatch": "#000" }
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "#F8F8F8"
+        },
+        {
+          "id": "grey",
+          "label": "Grey",
+          "swatch": "#8E8E8E"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "#000000"
+        }
       ],
+
       "defaultVariant": "black"
+    },
+
+    {
+      "id": "wyze-cam-pan-v3",
+      "stepId": "cameras",
+      "type": "camera",
+
+      "title": "Wyze Cam Pan v3",
+      "description": "360° pan and 180° tilt security camera.",
+      "learnMoreUrl": "#",
+
+      "image": "wyze-cam-pan-v3.png",
+
+      "badge": "Save 12%",
+
+      "price": 34.98,
+      "compareAtPrice": 39.98,
+
+      "variants": [
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "#F8F8F8"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "#000000"
+        }
+      ],
+
+      "defaultVariant": "white"
+    },
+
+    {
+      "id": "wyze-floodlight-v2",
+      "stepId": "cameras",
+      "type": "camera",
+
+      "title": "Wyze Cam Floodlight v2",
+      "description": "2K floodlight camera with a 160° wide-angle view for your garage.",
+      "learnMoreUrl": "#",
+
+      "image": "wyze-floodlight-v2.png",
+
+      "badge": "Save 22%",
+
+      "price": 69.98,
+      "compareAtPrice": 89.98,
+
+      "variants": [
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "#F8F8F8"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "#000000"
+        }
+      ],
+
+      "defaultVariant": "white"
+    },
+
+    {
+      "id": "wyze-battery-cam-pro",
+      "stepId": "cameras",
+      "type": "camera",
+
+      "title": "Wyze Battery Cam Pro",
+      "description": "Protect anywhere. See everything in 2.5K HDR. No power outlet or electrician needed.",
+      "learnMoreUrl": "#",
+
+      "image": "wyze-battery-cam-pro.png",
+
+      "price": 89.98,
+
+      "variants": [
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "#F8F8F8"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "#000000"
+        }
+      ],
+
+      "defaultVariant": "white"
+    },
+
+    {
+      "id": "wyze-doorbell",
+      "stepId": "cameras",
+      "type": "camera",
+
+      "title": "Wyze Duo Cam Doorbell",
+      "description": "Two cameras. Two views. Double the porch protection.",
+
+      "learnMoreUrl": "#",
+
+      "image": "wyze-doorbell.png",
+
+      "price": 69.98
     }
   ],
+
   "initialSelections": {
-    "wyze-cam-v4": { "variantId": "black", "quantity": 1 },
-    "wyze-cam-pan-v3": { "variantId": "white", "quantity": 2 }
+    "wyze-cam-v4": {
+      "selectedVariant": "black",
+      "variants": {
+        "white": 0,
+        "grey": 0,
+        "black": 1
+      }
+    },
+
+    "wyze-cam-pan-v3": {
+      "selectedVariant": "white",
+      "variants": {
+        "white": 2,
+        "black": 0
+      }
+    }
   }
 }

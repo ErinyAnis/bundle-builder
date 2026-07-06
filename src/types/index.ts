@@ -7,17 +7,27 @@ export interface Variant {
 export interface Product {
   id: string;
   stepId: string;
-  category: 'Cameras' | 'Sensors' | 'Accessories' | 'Plan';
+
+  type: "camera" | "sensor" | "plan" | "accessory";
+
   title: string;
-  description?: string;
-  learnMoreUrl?: string;
+  description: string;
+
   image: string;
+
+  learnMoreUrl: string;
+
   badge?: string;
+
   compareAtPrice?: number;
+
   price: number;
-  hasVariants: boolean;
+
   variants?: Variant[];
+
   defaultVariant?: string;
+
+  isRequired?: boolean;
 }
 
 export interface Step {
@@ -27,6 +37,16 @@ export interface Step {
   stepNumber: number;
 }
 
-// selections[productId][variantId] = quantity
-export type Selections = Record<string, Record<string, number>>;
-export type ActiveVariants = Record<string, string>;
+export interface ProductSelection {
+  selectedVariant: string;
+
+  variants: Record<string, number>;
+}
+
+export type BundleSelections = Record<string, ProductSelection>;
+
+export interface BundleData {
+  steps: Step[];
+  products: Product[];
+  initialSelections: BundleSelections;
+}
