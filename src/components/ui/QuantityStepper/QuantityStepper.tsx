@@ -1,37 +1,30 @@
 import { Minus, Plus } from "lucide-react";
-import clsx from "clsx";
+import { useBundleStore } from "../../../store/useBundleStore";
+import { useCartQuantity } from "../../../hooks";
 
-import type { QuantityStepperProps } from "./types";
+interface QuantityStepperProps {
+  productId: string;
+  variantId?: string;
+}
 
 export default function QuantityStepper({
-  value,
-  onIncrement,
-  onDecrement,
-  disabled = false,
+  productId,
+  variantId,
 }: QuantityStepperProps) {
+  const quantity = useCartQuantity(productId, variantId);
+
+  const increaseQuantity = useBundleStore((state) => state.increaseQuantity);
+  const decreaseQuantity = useBundleStore((state) => state.decreaseQuantity);
+
   return (
-    <div className="flex items-center gap-3 rounded-full border border-slate-200 px-2 py-1">
-      <button
-        type="button"
-        onClick={onDecrement}
-        disabled={disabled || value === 0}
-        className={clsx(
-          "flex h-8 w-8 items-center justify-center rounded-full transition",
-          "disabled:cursor-not-allowed disabled:opacity-40",
-          "hover:bg-slate-100",
-        )}
-      >
+    <div className="flex items-center gap-3 rounded-lg border border-gray-300 px-2 py-1">
+      <button onClick={() => decreaseQuantity(productId, variantId)}>
         <Minus size={16} />
       </button>
 
-      <span className="min-w-5 text-center text-sm font-medium">{value}</span>
+      <span className="w-5 text-center">{quantity}</span>
 
-      <button
-        type="button"
-        onClick={onIncrement}
-        disabled={disabled}
-        className="flex h-8 w-8 items-center justify-center rounded-full transition hover:bg-slate-100"
-      >
+      <button onClick={() => increaseQuantity(productId, variantId)}>
         <Plus size={16} />
       </button>
     </div>

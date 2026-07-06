@@ -6,29 +6,26 @@ import { isSameCartItem } from "../utils";
 interface BundleStore {
   cart: CartItem[];
 
-  addItem: (
+  increaseQuantity: (
     productId: string,
-
-    variantId?: string,
+    variantId?: string
   ) => void;
 
-  decreaseItem: (
+  decreaseQuantity: (
     productId: string,
-
-    variantId?: string,
+    variantId?: string
   ) => void;
 
   removeItem: (
     productId: string,
-
-    variantId?: string,
+    variantId?: string
   ) => void;
 }
 
 export const useBundleStore = create<BundleStore>()((set) => ({
   cart: [],
 
-  addItem: (productId, variantId) => {
+  increaseQuantity: (productId, variantId) => {
     set((state) => {
       const existingItem = state.cart.find(
         (item) => isSameCartItem(item, productId, variantId)
@@ -60,7 +57,7 @@ export const useBundleStore = create<BundleStore>()((set) => ({
     });
   },
 
-  decreaseItem: (productId, variantId) => {
+  decreaseQuantity: (productId, variantId) => {
     set((state) => {
       const existingItem = state.cart.find(
         (item) => isSameCartItem(item, productId, variantId),
