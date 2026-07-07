@@ -1,5 +1,6 @@
 import { products } from "../data";
 import { useBundleStore } from "../store/useBundleStore";
+import type { Product } from "../types";
 
 export function useReviewItems() {
   const cart = useBundleStore((state) => state.cart);
@@ -18,5 +19,13 @@ export function useReviewItems() {
       variantId: cartItem.variantId,
     };
   })
-  .filter(Boolean); // Remove null items
+  .filter(
+  (
+    item
+  ): item is {
+    product: Product;
+    quantity: number;
+    variantId: string | undefined;
+  } => item !== null
+);
 }

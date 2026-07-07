@@ -1,6 +1,9 @@
 import ReviewHeader from "./ReviewHeader";
+import { useReviewItems } from "../../../hooks";
+import ReviewItem from "./ReviewItem";
 
 export default function ReviewPanel() {
+  const reviewItems = useReviewItems();
   return (
     <aside
       className="
@@ -13,7 +16,16 @@ export default function ReviewPanel() {
     >
       <ReviewHeader />
 
-      <div className="mt-6">{/* Review Items */}</div>
+      <div className="mt-6 space-y-4">
+        {reviewItems.map((item) => (
+          <ReviewItem
+            key={`${item.product.id}-${item.variantId ?? "default"}`}
+            product={item.product}
+            quantity={item.quantity}
+            variantId={item.variantId}
+          />
+        ))}
+      </div>
     </aside>
   );
 }
