@@ -22,8 +22,6 @@ export const products: Product[] = [
 
     learnMoreUrl: "#",
 
-    hasVariants: true,
-
     defaultVariant: "black",
 
     variants: [

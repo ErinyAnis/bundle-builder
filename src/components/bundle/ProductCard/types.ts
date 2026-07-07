@@ -1,3 +1,5 @@
+import type { ProductVariant } from "../../../types";
+
 export interface ProductCardProps {
   id: string;
 
@@ -12,6 +14,12 @@ export interface ProductCardProps {
   compareAtPrice?: number;
 
   price: number;
+}
 
-  hasVariants: boolean;
+export interface VariantSelectorProps {
+    variants: ProductVariant[];
+
+    selectedVariant: string;
+
+    onSelect: (variantId: string) => void;
 }

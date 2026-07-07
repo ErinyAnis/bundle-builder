@@ -6,13 +6,10 @@ export interface ProductVariant {
 
 export interface Product {
   id: string;
-
   stepId: string;
-
   category: string;
 
   title: string;
-
   description: string;
 
   image: string;
@@ -24,8 +21,6 @@ export interface Product {
   price: number;
 
   learnMoreUrl?: string;
-
-  hasVariants: boolean;
 
   variants?: ProductVariant[];
 
