@@ -1,37 +1,51 @@
+import { useIsProductSelected } from "../../../hooks";
+import type { Product } from "../../../types";
+import QuantityStepper from "../../ui/QuantityStepper";
 import ProductBadge from "./ProductBadge";
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import ProductPrice from "./ProductPrice";
 
-import type { ProductCardProps } from "./types";
+interface ProductCardProps {
+  product: Product;
+}
 
-export default function ProductCard(props: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
+  const selected = useIsProductSelected(product.id);
   return (
     <article
-      className="
-      rounded-3xl
-      border
-      border-slate-200
-      bg-white
-      p-6
-      transition
-      hover:shadow-md
-      "
+      className={`
+relative
+flex
+flex-col
+rounded-2xl
+border
+bg-white
+p-4
+transition-all
+duration-200
+
+${selected ? "border-violet-600 shadow-lg" : "border-slate-200"}
+`}
     >
-      <ProductBadge text={props.badge} />
+      <ProductBadge badge={product.badge} />
 
-      <div className="mt-5">
-        <ProductImage src={props.image} alt={props.title} />
-      </div>
+      <ProductImage image={product.image} title={product.title} />
 
-      <div className="mt-6">
-        <ProductInfo title={props.title} description={props.description} />
-      </div>
+      <ProductInfo
+        title={product.title}
+        description={product.description}
+        learnMoreUrl={product.learnMoreUrl}
+      />
+      <div className="mt-6 flex items-center justify-between">
+        <QuantityStepper
+          productId={product.id}
+          variantId={product.defaultVariant}
+        />
 
-      <div className="mt-8">
         <ProductPrice
-          compareAtPrice={props.compareAtPrice}
-          price={props.price}
+          price={product.price}
+          compareAtPrice={product.compareAtPrice}
         />
       </div>
     </article>

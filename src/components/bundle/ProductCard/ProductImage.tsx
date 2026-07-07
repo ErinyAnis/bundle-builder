@@ -1,18 +1,21 @@
-interface Props {
-  src: string;
-  alt: string;
+interface ProductImageProps {
+  image: string;
+  title: string;
 }
 
-export default function ProductImage({ src, alt }: Props) {
+export default function ProductImage({ image, title }: ProductImageProps) {
   return (
-    <img
-      src={src}
-      alt={alt}
-      className="
-      mx-auto
-      h-44
-      object-contain
+    <div className="mt-8 flex justify-center">
+      <img
+        src={image}
+        alt={title}
+        className="
+        mx-auto
+        h-40
+        w-auto
+        object-contain
       "
-    />
+      />
+    </div>
   );
 }

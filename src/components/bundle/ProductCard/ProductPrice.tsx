@@ -1,18 +1,21 @@
-interface Props {
-  compareAtPrice?: number;
+interface ProductPriceProps {
   price: number;
+  compareAtPrice?: number;
 }
 
-export default function ProductPrice({ compareAtPrice, price }: Props) {
+export default function ProductPrice({
+  price,
+  compareAtPrice,
+}: ProductPriceProps) {
   return (
-    <div className="flex items-end gap-2">
+    <div className="flex items-center gap-2">
       {compareAtPrice && (
-        <span className="text-sm text-slate-400 line-through">
+        <span className="text-sm text-gray-400 line-through">
           ${compareAtPrice.toFixed(2)}
         </span>
       )}
 
-      <span className="text-2xl font-bold">${price.toFixed(2)}</span>
+      <span className="text-xl font-bold">${price.toFixed(2)}</span>
     </div>
   );
 }

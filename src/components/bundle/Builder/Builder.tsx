@@ -1,5 +1,7 @@
 import Accordion from "../../ui/Accordion";
 import { useBundleData } from "../../../hooks/useBundleData";
+import ProductCard from "../ProductCard/ProductCard";
+import { products } from "../../../data";
 
 export default function Builder() {
   const { steps } = useBundleData();
@@ -15,6 +17,12 @@ export default function Builder() {
           Build your personalized home security system.
         </p>
       </header>
+
+      <div className="space-y-6">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
 
       <Accordion
         items={steps.map((step) => ({

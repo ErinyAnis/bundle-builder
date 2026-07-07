@@ -1,7 +1,7 @@
 export interface ProductVariant {
   id: string;
   label: string;
-  swatch: string;
+  swatch?: string;
 }
 
 export interface Product {
