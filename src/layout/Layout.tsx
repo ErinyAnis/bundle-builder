@@ -1,5 +1,5 @@
 import Builder from "../components/bundle/Builder";
-import ReviewPanel from "../components/bundle/ReviewPanel";
+import ReviewPanel from "../components/bundle/review";
 
 export default function Layout() {
   return (
