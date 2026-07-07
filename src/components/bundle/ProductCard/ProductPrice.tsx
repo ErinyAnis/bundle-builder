@@ -1,11 +1,11 @@
+import type { Product } from "../../../types";
+
 interface ProductPriceProps {
-  price: number;
-  compareAtPrice?: number;
+  product: Product;
 }
 
 export default function ProductPrice({
-  price,
-  compareAtPrice,
+  product: { price, compareAtPrice },
 }: ProductPriceProps) {
   return (
     <div className="flex items-center gap-2">

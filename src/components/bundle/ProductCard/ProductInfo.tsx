@@ -1,13 +1,11 @@
+import type { Product } from "../../../types";
+
 interface ProductInfoProps {
-  title: string;
-  description: string;
-  learnMoreUrl?: string;
+  product: Product;
 }
 
 export default function ProductInfo({
-  title,
-  description,
-  learnMoreUrl,
+  product: { title, description, learnMoreUrl },
 }: ProductInfoProps) {
   return (
     <>
@@ -16,7 +14,19 @@ export default function ProductInfo({
       <p className="mt-2 text-sm leading-5 text-slate-500">{description}</p>
 
       {learnMoreUrl && (
-        <a className="mt-2 inline-flex text-sm font-medium text-violet-600 hover:underline">
+        <a
+          href={learnMoreUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="
+        mt-2
+        inline-flex
+        text-sm
+        font-medium
+        text-violet-600
+        hover:underline
+    "
+        >
           Learn More
         </a>
       )}

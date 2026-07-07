@@ -18,13 +18,32 @@ export default function QuantityStepper({
 
   return (
     <div className="flex items-center gap-3 rounded-lg border border-gray-300 px-2 py-1">
-      <button onClick={() => decreaseQuantity(productId, variantId)}>
+      <button
+        className="
+  rounded
+  p-1
+  transition
+  disabled:cursor-not-allowed
+  disabled:opacity-40
+"
+        type="button"
+        disabled={quantity === 0}
+        onClick={() => decreaseQuantity(productId, variantId)}
+      >
         <Minus size={16} />
       </button>
 
       <span className="w-5 text-center">{quantity}</span>
 
-      <button onClick={() => increaseQuantity(productId, variantId)}>
+      <button
+        className="
+  rounded
+  p-1
+  transition
+"
+        type="button"
+        onClick={() => increaseQuantity(productId, variantId)}
+      >
         <Plus size={16} />
       </button>
     </div>

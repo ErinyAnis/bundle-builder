@@ -1,7 +1,6 @@
 import { useState } from "react";
 import AccordionItem from "./AccordionItem";
 import type { AccordionItemData } from "./types";
-import TestStore from "../../TestStore";
 
 interface AccordionProps {
   items: AccordionItemData[];
@@ -23,8 +22,6 @@ export default function Accordion({ items, defaultOpen }: AccordionProps) {
           }
         />
       ))}
-
-      <TestStore />
     </div>
   );
 }

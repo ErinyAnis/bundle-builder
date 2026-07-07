@@ -1,8 +1,12 @@
+import type { Product } from "../../../types";
+
 interface ProductBadgeProps {
-  badge?: string;
+  product: Product;
 }
 
-export default function ProductBadge({ badge }: ProductBadgeProps) {
+export default function ProductBadge({ product }: ProductBadgeProps) {
+  const { badge } = product;
+
   if (!badge) return null;
 
   return (

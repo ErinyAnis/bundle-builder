@@ -1,14 +1,15 @@
+import type { Product } from "../../../types";
+
 interface ProductImageProps {
-  image: string;
-  title: string;
+  product: Product;
 }
 
-export default function ProductImage({ image, title }: ProductImageProps) {
+export default function ProductImage({ product }: ProductImageProps) {
   return (
     <div className="mt-8 flex justify-center">
       <img
-        src={image}
-        alt={title}
+        src={product.image}
+        alt={product.title}
         className="
         mx-auto
         h-40

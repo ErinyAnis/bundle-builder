@@ -1,33 +1,21 @@
 import { useState } from "react";
 import { useIsProductSelected } from "../../../hooks";
-import type { Product } from "../../../types";
+import type { ProductCardProps } from "./types";
 import QuantityStepper from "../../ui/QuantityStepper";
 import ProductBadge from "./ProductBadge";
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import ProductPrice from "./ProductPrice";
-import type { ProductVariant } from "../../../types";
 import VariantSelector from "./VariantSelector";
 
-interface ProductCardProps {
-  product: Product;
-}
-
-export interface VariantSelectorProps {
-  variants: ProductVariant[];
-
-  selectedVariant: string;
-
-  onSelect: (variantId: string) => void;
-}
-
 export default function ProductCard({ product }: ProductCardProps) {
-  const selected = useIsProductSelected(product.id);
+  const isSelected = useIsProductSelected(product.id);
 
-  const initialVariant =
+  const defaultVariantId =
     product.defaultVariant ?? product.variants?.[0]?.id ?? "";
 
-  const [selectedVariant, setSelectedVariant] = useState(initialVariant);
+  const [selectedVariant, setSelectedVariant] =
+    useState<string>(defaultVariantId);
   return (
     <article
       className={`
@@ -38,21 +26,17 @@ rounded-2xl
 border
 bg-white
 p-4
-transition-all
+transition-colors
 duration-200
 
-${selected ? "border-violet-600 shadow-lg" : "border-slate-200"}
+${isSelected ? "border-violet-600 shadow-lg" : "border-slate-200"}
 `}
     >
-      <ProductBadge badge={product.badge} />
+      <ProductBadge product={product} />
 
-      <ProductImage image={product.image} title={product.title} />
+      <ProductImage product={product} />
 
-      <ProductInfo
-        title={product.title}
-        description={product.description}
-        learnMoreUrl={product.learnMoreUrl}
-      />
+      <ProductInfo product={product} />
 
       {product.variants?.length ? (
         <VariantSelector
@@ -62,14 +46,11 @@ ${selected ? "border-violet-600 shadow-lg" : "border-slate-200"}
         />
       ) : null}
 
-      <div className="mt-6 flex items-center justify-between">
+      <footer className="mt-6 flex items-center justify-between">
         <QuantityStepper productId={product.id} variantId={selectedVariant} />
 
-        <ProductPrice
-          price={product.price}
-          compareAtPrice={product.compareAtPrice}
-        />
-      </div>
+        <ProductPrice product={product} />
+      </footer>
     </article>
   );
 }

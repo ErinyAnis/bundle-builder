@@ -6,7 +6,7 @@ export default function VariantSelector({
   onSelect,
 }: VariantSelectorProps) {
   return (
-    <div className="mt-4 flex gap-2">
+    <div className="mt-4 flex flex-wrap gap-2">
       {variants.map((variant) => (
         <button
           key={variant.id}
@@ -21,7 +21,7 @@ export default function VariantSelector({
         px-2
         py-1
         text-xs
-        transition-all
+        transition-colors
 
         ${
           selectedVariant === variant.id
@@ -31,13 +31,13 @@ export default function VariantSelector({
     `}
         >
           <span
-            className="h-3 w-3 rounded-full border"
+            className="h-3 w-3 shrink-0 rounded-full border border-slate-200 hover:border-slate-400"
             style={{
               backgroundColor: variant.swatch,
             }}
           />
 
-          <span>{variant.label}</span>
+          <span className="font-medium">{variant.label}</span>
         </button>
       ))}
     </div>
