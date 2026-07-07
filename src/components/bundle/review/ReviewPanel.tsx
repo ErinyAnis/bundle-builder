@@ -1,10 +1,10 @@
+import { useGroupedReviewItems } from "../../../hooks";
 import ReviewHeader from "./ReviewHeader";
-import { useReviewItems } from "../../../hooks";
 import ReviewItem from "./ReviewItem";
 import ReviewSummary from "./ReviewSummary";
 
 export default function ReviewPanel() {
-  const reviewItems = useReviewItems();
+  const groupedItems = useGroupedReviewItems();
   return (
     <aside
       className="
@@ -17,16 +17,35 @@ export default function ReviewPanel() {
     >
       <ReviewHeader />
 
-      <div className="mt-6 space-y-4">
-        {reviewItems.map((item) => (
-          <ReviewItem
-            key={`${item.product.id}-${item.variantId ?? "default"}`}
-            product={item.product}
-            quantity={item.quantity}
-            variantId={item.variantId}
-          />
+      <section className="mt-6">
+        {Object.entries(groupedItems).map(([category, items]) => (
+          <section key={category} className="mb-8">
+            <h2
+              className="
+mb-4
+text-xs
+font-bold
+uppercase
+tracking-widest
+text-slate-400
+"
+            >
+              {category}
+            </h2>
+
+            <div className="space-y-2">
+              {items.map((item) => (
+                <ReviewItem
+                  key={`${item.product.id}-${item.variantId ?? "default"}`}
+                  product={item.product}
+                  quantity={item.quantity}
+                  variantId={item.variantId}
+                />
+              ))}
+            </div>
+          </section>
         ))}
-      </div>
+      </section>
 
       <ReviewSummary />
     </aside>
