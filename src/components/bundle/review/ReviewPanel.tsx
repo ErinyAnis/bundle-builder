@@ -1,6 +1,7 @@
 import ReviewHeader from "./ReviewHeader";
 import { useReviewItems } from "../../../hooks";
 import ReviewItem from "./ReviewItem";
+import ReviewSummary from "./ReviewSummary";
 
 export default function ReviewPanel() {
   const reviewItems = useReviewItems();
@@ -26,6 +27,8 @@ export default function ReviewPanel() {
           />
         ))}
       </div>
+
+      <ReviewSummary />
     </aside>
   );
 }
