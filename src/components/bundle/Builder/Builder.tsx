@@ -22,39 +22,65 @@ export default function Builder() {
     return {
       id: step.id,
 
+      selectedCount,
+
       title: (
-        <div className="flex items-start gap-4">
-          <span
+        <>
+          <p
             className="
-      flex
-      h-8
-      w-8
-      items-center
-      justify-center
-      rounded-full
-      bg-slate-100
-      text-sm
+      border-b
+      border-[#484848]
+      px-3
+      pb-2
+      text-xs
       font-semibold
-      text-slate-700
-      "
+      uppercase
+      tracking-widest
+      text-[#484848]
+    "
           >
-            {step.stepNumber}
-          </span>
+            Step {step.stepNumber} of {steps.length}
+          </p>
 
-          <div>
-            <h3 className="text-lg font-semibold">{step.title}</h3>
+          <div className="flex items-center justify-between pt-5 px-3 pb-2">
+            <div className="flex items-center gap-4">
+              <img
+                src={step.icon}
+                alt={step.title}
+                className="h-7 w-7 shrink-0"
+              />
 
-            <p className="mt-1 text-sm text-slate-500">
-              {selectedCount} Selected
-            </p>
+              <h3 className="text-lg font-semibold">{step.title}</h3>
+            </div>
+
+            <span className="text-sm font-medium text-violet-600 pe-3">
+              {selectedCount} selected
+            </span>
           </div>
-        </div>
+        </>
       ),
 
       content: (
-        <div className="space-y-6 pt-6">
-          {productsForStep.map((product) => (
-            <ProductCard key={product.id} product={product} />
+        <div
+          className="
+    grid
+   grid-cols-[repeat(auto-fit,minmax(320px,1fr))]
+    justify-center
+    gap-6
+  "
+        >
+          {productsForStep.map((product, index) => (
+            <div
+              key={product.id}
+              className={
+                index === productsForStep.length - 1 &&
+                productsForStep.length % 2 !== 0
+                  ? "md:col-span-2 flex justify-center"
+                  : ""
+              }
+            >
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
       ),
@@ -62,15 +88,11 @@ export default function Builder() {
   });
 
   return (
-    <section className="min-w-0 space-y-8">
+    <section className="min-w-0">
       <header>
-        <h1 className="text-[40px] font-semibold leading-tight">
+        <h1 className="text-[40px] font-semibold leading-tight lg:hidden">
           Let's get started!
         </h1>
-
-        <p className="mt-3 text-base text-slate-500">
-          Build your personalized home security system.
-        </p>
       </header>
 
       <Accordion items={accordionItems} />

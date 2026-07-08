@@ -14,7 +14,7 @@ interface Props {
 export default function AccordionItem({ item, isOpen, onToggle }: Props) {
   return (
     <div className="overflow-hidden rounded-3xl border border-slate-200">
-      <AccordionHeader title={item.title} isOpen={isOpen} onClick={onToggle} />
+      <AccordionHeader onClick={onToggle}>{item.title}</AccordionHeader>
 
       <AccordionContent isOpen={isOpen}>{item.content}</AccordionContent>
     </div>

@@ -1,6 +1,6 @@
 export interface Step {
   id: string;
   title: string;
-  icon: "camera" | "shield" | "sensor" | "home";
+  icon: string;
   stepNumber: number;
 }

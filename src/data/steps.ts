@@ -4,25 +4,25 @@ export const steps: Step[] = [
   {
     id: "cameras",
     title: "Choose your cameras",
-    icon: "camera",
+    icon: "/icons/camera.svg",
     stepNumber: 1,
   },
   {
     id: "plan",
     title: "Choose your plan",
-    icon: "shield",
+    icon: "/icons/shield.svg",
     stepNumber: 2,
   },
   {
     id: "sensors",
     title: "Choose your sensors",
-    icon: "sensor",
+    icon: "/icons/sensor.svg",
     stepNumber: 3,
   },
   {
     id: "protection",
     title: "Add extra protection",
-    icon: "home",
+    icon: "/icons/home.svg",
     stepNumber: 4,
   },
 ];

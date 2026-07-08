@@ -6,7 +6,8 @@ export default function ReviewHeader() {
       </h2>
 
       <p className="mt-2 text-sm text-slate-500">
-        Review your selected products before checkout.
+        Review your personalized protection system designed to keep what matters
+        most safe.
       </p>
     </header>
   );

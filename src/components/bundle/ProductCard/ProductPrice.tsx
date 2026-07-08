@@ -8,14 +8,14 @@ export default function ProductPrice({
   product: { price, compareAtPrice },
 }: ProductPriceProps) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center flex-col">
       {compareAtPrice && (
-        <span className="text-sm text-gray-400 line-through">
+        <span className="text-[#D8392B] line-through">
           ${compareAtPrice.toFixed(2)}
         </span>
       )}
 
-      <span className="text-xl font-bold">${price.toFixed(2)}</span>
+      <span className=" font-bold text-[#575757">${price.toFixed(2)}</span>
     </div>
   );
 }

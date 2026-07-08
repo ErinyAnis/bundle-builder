@@ -11,7 +11,7 @@ export default function AccordionContent({ isOpen, children }: Props) {
   return (
     <div
       className={clsx(
-        "grid transition-all duration-300",
+        "grid transition-all duration-300 px-4",
         isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
       )}
     >

@@ -26,10 +26,10 @@ flex-col
 rounded-2xl
 border
 bg-white
-p-5
-lg:p-6
+p-3
 transition-all
 duration-200
+h-full
 
 ${
   isSelected
@@ -40,31 +40,37 @@ ${
     >
       <ProductBadge product={product} />
 
-      <ProductImage product={product} />
+      <div className="flex flex-col items-center gap-4 xl:flex-row xl:items-start">
+        <ProductImage product={product} />
 
-      <ProductInfo product={product} />
+        <div>
+          <ProductInfo product={product} />
+          {product.variants?.length ? (
+            <VariantSelector
+              variants={product.variants}
+              selectedVariant={selectedVariant}
+              onSelect={setSelectedVariant}
+            />
+          ) : null}
 
-      {product.variants?.length ? (
-        <VariantSelector
-          variants={product.variants}
-          selectedVariant={selectedVariant}
-          onSelect={setSelectedVariant}
-        />
-      ) : null}
-
-      <footer
-        className="
-    mt-6
+          <footer
+            className="
+    mt-3
     flex
     items-center
     justify-between
     gap-4
   "
-      >
-        <QuantityStepper productId={product.id} variantId={selectedVariant} />
+          >
+            <QuantityStepper
+              productId={product.id}
+              variantId={selectedVariant}
+            />
 
-        <ProductPrice product={product} />
-      </footer>
+            <ProductPrice product={product} />
+          </footer>
+        </div>
+      </div>
     </article>
   );
 }

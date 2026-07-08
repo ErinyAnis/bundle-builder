@@ -9,16 +9,18 @@ export default function ProductInfo({
 }: ProductInfoProps) {
   return (
     <>
-      <h3 className="mt-4 text-base font-semibold text-slate-900">{title}</h3>
+      <h3 className="text-base font-semibold text-slate-900">{title}</h3>
 
-      <p className="mt-2 text-sm leading-5 text-slate-500">{description}</p>
+      <p className="mt-2 text-sm leading-5 text-slate-500">
+        {description}
 
-      {learnMoreUrl && (
-        <a
-          href={learnMoreUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="
+        {learnMoreUrl && (
+          <span>
+            <a
+              href={learnMoreUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="
         mt-2
         inline-flex
         text-sm
@@ -26,10 +28,12 @@ export default function ProductInfo({
         text-violet-600
         hover:underline
     "
-        >
-          Learn More
-        </a>
-      )}
+            >
+              Learn More
+            </a>
+          </span>
+        )}
+      </p>
     </>
   );
 }

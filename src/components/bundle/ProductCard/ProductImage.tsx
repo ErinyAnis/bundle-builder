@@ -8,7 +8,8 @@ export default function ProductImage({ product }: ProductImageProps) {
   return (
     <div
       className="
-mt-8 flex justify-center px-4
+lg:mt-8 px-2 h-30 sm:h-30
+lg:h-30 min-w-20
 "
     >
       <img
@@ -16,9 +17,8 @@ mt-8 flex justify-center px-4
         alt={product.title}
         className="
 mx-auto
-h-32
-sm:h-36
-lg:h-44
+
+h-full
 w-auto
 object-contain
 transition-transform
