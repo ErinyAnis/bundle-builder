@@ -5,6 +5,24 @@ import { products } from "../../../data";
 
 export default function Builder() {
   const { steps } = useBundleData();
+  const accordionItems = steps.map((step) => {
+    const stepProducts = products.filter(
+      (product) => product.stepId === step.id,
+    );
+    return {
+      id: step.id,
+
+      title: step.title,
+
+      content: (
+        <div className="space-y-6 pt-6">
+          {stepProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      ),
+    };
+  });
 
   return (
     <section className="flex flex-col gap-8">
@@ -18,19 +36,7 @@ export default function Builder() {
         </p>
       </header>
 
-      <div className="space-y-6">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-
-      <Accordion
-        items={steps.map((step) => ({
-          id: step.id,
-          title: step.title,
-          content: <div className="p-6">{step.title}</div>,
-        }))}
-      />
+      <Accordion items={accordionItems} />
     </section>
   );
 }
