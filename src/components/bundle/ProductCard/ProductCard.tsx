@@ -19,17 +19,23 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <article
       className={`
+group
 relative
 flex
 flex-col
 rounded-2xl
 border
 bg-white
-p-4
-transition-colors
+p-5
+lg:p-6
+transition-all
 duration-200
 
-${isSelected ? "border-violet-600 shadow-lg" : "border-slate-200"}
+${
+  isSelected
+    ? "border-violet-600 shadow-lg"
+    : "border-slate-200 hover:border-slate-300"
+}
 `}
     >
       <ProductBadge product={product} />
@@ -46,7 +52,15 @@ ${isSelected ? "border-violet-600 shadow-lg" : "border-slate-200"}
         />
       ) : null}
 
-      <footer className="mt-6 flex items-center justify-between">
+      <footer
+        className="
+    mt-6
+    flex
+    items-center
+    justify-between
+    gap-4
+  "
+      >
         <QuantityStepper productId={product.id} variantId={selectedVariant} />
 
         <ProductPrice product={product} />

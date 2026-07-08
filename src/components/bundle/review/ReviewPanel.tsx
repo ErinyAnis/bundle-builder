@@ -9,12 +9,16 @@ export default function ReviewPanel() {
   return (
     <aside
       className="
-        rounded-3xl
-        border
-        border-slate-200
-        bg-white
-        p-6
-      "
+    rounded-3xl
+    border
+    border-slate-200
+    bg-white
+    p-6
+
+    lg:sticky
+    lg:top-8
+    lg:self-start
+  "
     >
       <ReviewHeader />
 

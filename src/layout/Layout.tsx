@@ -10,13 +10,12 @@ export default function Layout() {
       min-h-screen
       max-w-[1440px]
       grid-cols-1
-      gap-10
+      gap-8
+      xl:gap-10
       px-4
       py-8
-
-      lg:grid-cols-[1fr_420px]
+      lg:grid-cols-[minmax(0,1fr)_400px]
       lg:px-8
-
       xl:px-12
     "
     >
