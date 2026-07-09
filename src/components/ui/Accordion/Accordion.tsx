@@ -1,15 +1,17 @@
-import { useState } from "react";
 import AccordionItem from "./AccordionItem";
 import type { AccordionItemData } from "./types";
 
 interface AccordionProps {
   items: AccordionItemData[];
-  defaultOpen?: string;
+  openId: string;
+  onOpenChange: (id: string) => void;
 }
 
-export default function Accordion({ items, defaultOpen }: AccordionProps) {
-  const [openId, setOpenId] = useState(defaultOpen ?? items[0]?.id);
-
+export default function Accordion({
+  items,
+  openId,
+  onOpenChange,
+}: AccordionProps) {
   return (
     <div className="flex flex-col gap-4">
       {items.map((item) => (
@@ -17,9 +19,7 @@ export default function Accordion({ items, defaultOpen }: AccordionProps) {
           key={item.id}
           item={item}
           isOpen={openId === item.id}
-          onToggle={() =>
-            setOpenId((prev) => (prev === item.id ? "" : item.id))
-          }
+          onToggle={() => onOpenChange(openId === item.id ? "" : item.id)}
         />
       ))}
     </div>

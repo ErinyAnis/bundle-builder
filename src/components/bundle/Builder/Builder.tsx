@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Accordion from "../../ui/Accordion";
 import { useBundleData } from "../../../hooks/useBundleData";
 import ProductCard from "../ProductCard/ProductCard";
@@ -6,6 +7,15 @@ import { useReviewItems } from "../../../hooks";
 
 export default function Builder() {
   const { steps } = useBundleData();
+  const [openId, setOpenId] = useState(steps[0].id);
+
+  const goToNextStep = (currentStepId: string) => {
+    const currentIndex = steps.findIndex((step) => step.id === currentStepId);
+
+    if (currentIndex < steps.length - 1) {
+      setOpenId(steps[currentIndex + 1].id);
+    }
+  };
 
   const reviewItems = useReviewItems();
 
@@ -85,9 +95,28 @@ export default function Builder() {
             ))}
           </div>
           <div className="text-center my-4">
-            <button className="mx-auto px-6 py-2 border-violet-700 text-violet-700 border rounded-lg hover:bg-violet-700 hover:text-white transition-colors font-medium cursor-pointer">
-              Next: Choose your plan
-            </button>
+            {step.stepNumber < steps.length && (
+              <div className="my-4 text-center">
+                <button
+                  onClick={() => goToNextStep(step.id)}
+                  className="
+        mx-auto
+        rounded-lg
+        border
+        border-violet-700
+        px-6
+        py-2
+        font-medium
+        text-violet-700
+        transition-colors
+        hover:bg-violet-700
+        hover:text-white
+      "
+                >
+                  Next: {steps[step.stepNumber].title}
+                </button>
+              </div>
+            )}
           </div>
         </>
       ),
@@ -102,7 +131,11 @@ export default function Builder() {
         </h1>
       </header>
 
-      <Accordion items={accordionItems} />
+      <Accordion
+        items={accordionItems}
+        openId={openId}
+        onOpenChange={setOpenId}
+      />
     </section>
   );
 }
