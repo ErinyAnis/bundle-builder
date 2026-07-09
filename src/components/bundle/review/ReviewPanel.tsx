@@ -15,8 +15,6 @@ export default function ReviewPanel() {
     bg-[#EDF4FF]
     px-5
     py-3
-    lg:sticky
-    lg:top-8
     lg:self-start
   "
     >
