@@ -17,34 +17,65 @@ export default function QuantityStepper({
   const decreaseQuantity = useBundleStore((state) => state.decreaseQuantity);
 
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-gray-300 px-2 py-1">
+    <div
+      className="
+      flex
+      h-8
+      items-center
+      overflow-hidden
+    "
+    >
       <button
-        className="
-  rounded
-  p-1
-  transition
-  disabled:cursor-not-allowed
-  disabled:opacity-40
-"
         type="button"
         disabled={quantity === 0}
         onClick={() => decreaseQuantity(productId, variantId)}
+        className="
+        flex
+        h-6
+        w-6
+        items-center
+        justify-center
+        bg-[#F1F5F9]
+        text-slate-500
+        transition-colors
+        hover:bg-slate-200
+        disabled:bg-slate-50
+        disabled:text-slate-300
+        disabled:cursor-not-allowed
+      "
       >
-        <Minus size={16} />
+        <Minus size={14} strokeWidth={2.5} />
       </button>
 
-      <span className="w-5 text-center">{quantity}</span>
+      <span
+        className="
+        flex
+        w-10
+        items-center
+        justify-center
+        text-base font-normal
+        text-slate-900
+      "
+      >
+        {quantity}
+      </span>
 
       <button
-        className="
-  rounded
-  p-1
-  transition
-"
         type="button"
         onClick={() => increaseQuantity(productId, variantId)}
+        className="
+        flex
+        h-6
+        w-6
+        items-center
+        justify-center
+        bg-[#F1F5F9]
+        text-slate-500
+        transition-colors
+        hover:bg-slate-200
+      "
       >
-        <Plus size={16} />
+        <Plus size={14} strokeWidth={2.5} />
       </button>
     </div>
   );

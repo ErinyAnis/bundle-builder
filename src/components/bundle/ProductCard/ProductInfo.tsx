@@ -26,7 +26,8 @@ export default function ProductInfo({
         text-sm
         font-medium
         text-violet-600
-        hover:underline
+        underline
+        ms-1
     "
             >
               Learn More

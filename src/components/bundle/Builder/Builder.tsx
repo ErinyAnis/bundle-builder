@@ -61,28 +61,35 @@ export default function Builder() {
       ),
 
       content: (
-        <div
-          className="
+        <>
+          <div
+            className="
     grid
    grid-cols-[repeat(auto-fit,minmax(320px,1fr))]
     justify-center
-    gap-6
+    gap-6 py-3
   "
-        >
-          {productsForStep.map((product, index) => (
-            <div
-              key={product.id}
-              className={
-                index === productsForStep.length - 1 &&
-                productsForStep.length % 2 !== 0
-                  ? "md:col-span-2 flex justify-center"
-                  : ""
-              }
-            >
-              <ProductCard product={product} />
-            </div>
-          ))}
-        </div>
+          >
+            {productsForStep.map((product, index) => (
+              <div
+                key={product.id}
+                className={
+                  index === productsForStep.length - 1 &&
+                  productsForStep.length % 2 !== 0
+                    ? "md:col-span-2 flex justify-center"
+                    : ""
+                }
+              >
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
+          <div className="text-center my-4">
+            <button className="mx-auto px-6 py-2 border-violet-700 text-violet-700 border rounded-lg hover:bg-violet-700 hover:text-white transition-colors font-medium cursor-pointer">
+              Next: Choose your plan
+            </button>
+          </div>
+        </>
       ),
     };
   });

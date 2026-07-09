@@ -9,12 +9,12 @@ export default function ReviewPanel() {
   return (
     <aside
       className="
-    rounded-3xl
+    rounded-2xl
     border
     border-slate-200
-    bg-white
-    p-6
-
+    bg-[#EDF4FF]
+    px-5
+    py-3
     lg:sticky
     lg:top-8
     lg:self-start
@@ -22,7 +22,7 @@ export default function ReviewPanel() {
     >
       <ReviewHeader />
 
-      <div className="mt-6 space-y-8">
+      <div className="mt-6 space-y-6">
         {groupedEntries.length === 0 ? (
           <p className="py-10 text-center text-sm text-slate-500">
             No products selected yet.
@@ -32,9 +32,7 @@ export default function ReviewPanel() {
             <section key={category}>
               <h2
                 className="
-  mb-4
   text-xs
-  font-bold
   uppercase
   tracking-widest
   text-slate-400

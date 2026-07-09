@@ -20,32 +20,39 @@ export default function ReviewItem({
   return (
     <article
       className="
-flex
-items-center
-gap-4
-border-b
-border-slate-200
-py-5
-"
+      flex
+      items-center
+      gap-4
+      border-b
+      border-slate-200
+      py-5
+      last:border-0
+    "
     >
       <img
         src={product.image}
         alt={product.title}
-        className="h-16 w-16 rounded-lg object-contain"
+        className="h-14 w-14 shrink-0 rounded-lg object-contain"
       />
 
-      <div className="flex-1">
+      <div className="min-w-0 flex-1">
         <h3 className="font-medium text-slate-900">{product.title}</h3>
 
         {variantLabel && (
-          <p className="mt-1 text-sm text-slate-500">{variantLabel}</p>
+          <p className="mt-1 text-xs text-slate-500">{variantLabel}</p>
         )}
       </div>
 
-      <div className="flex flex-col items-end gap-2">
-        <QuantityStepper productId={product.id} variantId={variantId} />
+      <QuantityStepper productId={product.id} variantId={variantId} />
 
-        <span className="text-sm font-semibold">
+      <div className="flex flex-col items-end leading-none">
+        {product.compareAtPrice && (
+          <span className="text-sm text-slate-400 line-through">
+            ${product.compareAtPrice.toFixed(2)}
+          </span>
+        )}
+
+        <span className="mt-1 text-lg font-semibold text-violet-600">
           ${product.price.toFixed(2)}
         </span>
       </div>
