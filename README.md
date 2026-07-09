@@ -1,76 +1,87 @@
-# React + TypeScript + Vite
+# Home Security System Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React application that allows users to build and customize a home security system through a multi-step builder with a live review panel.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Multi-step accordion builder
+- Responsive layout for desktop and mobile
+- Dynamic product cards rendered from JSON data
+- Variant (color) selection
+- Quantity steppers synchronized across the builder and review panel
+- Live order summary with:
+  - Shipping
+  - Savings
+  - Total price
+- Products grouped by category in the review panel
+- Local persistence using Zustand Persist (localStorage)
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Zustand
+- Lucide React
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Install dependencies
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Start the development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Build for production
+
+```bash
+npm run build
+```
+
+## Project Structure
 
 ```
-# bundle-builder
+src/
+ ├── components/
+ ├── hooks/
+ ├── store/
+ ├── data/
+ ├── types/
+ ├── utils/
+ └── layouts/
+```
+
+## Data
+
+The application is fully data-driven.
+
+All products and bundle steps are rendered from local JSON/TypeScript data instead of hardcoded UI.
+
+## State Management
+
+The application uses Zustand to manage the shopping cart.
+
+The cart is persisted using Zustand Persist middleware with localStorage.
+
+## Notes
+
+- Product quantities stay synchronized between the product cards and the review panel.
+- Each product variant maintains its own quantity.
+- The review panel updates automatically as the configuration changes.
+- The application is responsive across different screen sizes.
+
+## Tradeoffs
+
+- Product data is served from local static data instead of a backend API.
+- The "Checkout" button is a placeholder and does not perform any checkout flow.
+
+## Author
+
+Eriny Anis
